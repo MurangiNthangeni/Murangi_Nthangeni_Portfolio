@@ -1,170 +1,291 @@
 /* style.css */
 
+/* Define color variables and main font */
 :root {
-    --nude-light: #fcefe6;
-    --nude-medium: #e8d8c3;
-    --nude-dark: #d5bfa9;
-    --text-dark: #000;
-    --accent: #000;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
+  --nude-light: #fcefe6;
+  --nude-medium: #e8d8c3;
+  --nude-dark: #d5bfa9;
+  --text-dark: #000;
+  --accent: #000; /* Accent color (black) */
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Basic body styling */
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--nude-light);
+  color: var(--text-dark);
+}
+
+/* Sticky navigation bar styling */
+nav {
+  position: sticky;
+  top: 0;
+  background: var(--nude-dark); /* Background for the nav bar */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center items if height varies */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  padding: 0.75rem 1rem; /* Adjusted padding */
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Style navigation links as buttons - NUDE BACKGROUND, BLACK TEXT */
+nav a {
+  display: inline-block; /* Treat links as blocks for padding/margin but flow inline */
+  margin: 0.5rem; /* Space around each button */
+  padding: 0.75rem 1.5rem; /* Padding inside the button (matches .btn) */
+  text-decoration: none; /* Remove underline */
+  color: var(--accent); /* Text color (black) */
+  background-color: var(--nude-medium); /* Button background color (nude) */
+  font-weight: bold;
+  border: 2px solid var(--nude-dark); /* Border matching the nav background */
+  border-radius: 5px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for navigation buttons - INVERTED COLORS */
+nav a:hover {
+  background-color: var(--accent); /* Change background to black on hover */
+  color: var(--nude-light); /* Change text color to light nude on hover */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* Container for centering content */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+/* Hero section styling */
+.hero {
+  background-color: var(--nude-medium);
+  text-align: center;
+  padding: 4rem 2rem;
+  animation: fadeIn 2s ease-in-out; /* Apply fade-in animation */
+}
+
+/* Profile picture styling */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Make it circular */
+  object-fit: cover; /* Ensure image covers the area */
+  border: 4px solid var(--accent); /* Border matching accent color */
+  animation: float 6s ease-in-out infinite; /* Apply floating animation */
+}
+
+/* General button styling (e.g., Download CV) */
+.btn {
+  display: inline-block; /* Ensure proper spacing and alignment */
+  background: none; /* Transparent background */
+  border: 2px solid var(--accent); /* Border matching accent color */
+  padding: 0.75rem 1.5rem; /* Padding inside the button */
+  margin-top: 1rem; /* Space above the button */
+  text-decoration: none; /* Remove underline */
+  color: var(--accent); /* Text color */
+  font-weight: bold;
+  border-radius: 5px; /* Match nav button corners */
+  transition: background 0.3s, color 0.3s; /* Smooth hover transition */
+}
+
+/* Hover effect for general buttons */
+.btn:hover {
+  background: var(--accent); /* Fill background on hover */
+  color: var(--nude-light); /* Change text color on hover */
+}
+
+/* General section styling */
+section {
+  padding: 3rem 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  border-top: 1px solid var(--nude-dark); /* Separator line */
+  border-radius: 0; /* Default no radius */
+  background-color: var(--nude-light); /* Default background */
+}
+
+/* Hover effect for sections */
+section:hover {
+  transform: translateY(-5px); /* Lift section slightly */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Add shadow */
+  border-radius: 1rem; /* Round corners on hover */
+  background-color: #fdf6f1; /* Slightly different background on hover */
+}
+
+/* Skills grid layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Space between grid items */
+  margin-top: 1rem;
+}
+
+/* Styling for individual skill items */
+.skills-grid div {
+  background: var(--nude-medium); /* Background color */
+  padding: 1rem;
+  border-radius: 10px; /* Rounded corners */
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Space between icon and text */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for skill items */
+.skills-grid div:hover {
+  transform: translateY(-5px); /* Lift item slightly */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Add shadow */
+}
+
+/* Timeline styling */
+.timeline {
+  margin-top: 2rem;
+  position: relative; /* Needed for potential pseudo-elements if adding a central line later */
+}
+
+/* Styling for individual timeline items */
+.timeline-item {
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--accent); /* Vertical line */
+  padding-left: 1.5rem; /* Space left of the line */
+  position: relative; /* For potential future decorations */
+}
+
+/* Timeline item heading styling */
+.timeline-item h3 {
+  margin: 0.2rem 0 0.5rem 0; /* Adjusted margin */
+  color: var(--accent);
+}
+
+/* Timeline item date/span styling */
+.timeline-item span {
+  display: block; /* Put date on its own line */
+  font-size: 0.9em;
+  color: #555; /* Slightly muted color for date */
+  margin-bottom: 0.5rem;
+}
+
+/* Timeline item list styling */
+.timeline-item ul {
+  list-style: disc; /* Use standard bullets */
+  padding-left: 20px; /* Indent list items */
+  margin-top: 0.5rem;
+}
+.timeline-item li {
+  margin-bottom: 0.5rem; /* Space between list items */
+}
+/* Remove default paragraph margins inside list items for cleaner look */
+.timeline-item li p {
     margin: 0;
-    font-family: var(--font-main);
-    background-color: var(--nude-light);
-    color: var(--text-dark);
-  }
-  
-  nav {
-    position: sticky;
-    top: 0;
-    background: var(--nude-dark);
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
-  nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: var(--accent);
-    font-weight: bold;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 2rem 0;
-  }
-  
-  .hero {
-    background-color: var(--nude-medium);
-    text-align: center;
-    padding: 4rem 2rem;
-    animation: fadeIn 2s ease-in-out;
-  }
-  
-  .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--accent);
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .btn {
-    background: none;
-    border: 2px solid var(--accent);
-    padding: 0.75rem 1.5rem;
-    margin-top: 1rem;
-    text-decoration: none;
-    color: var(--accent);
-    font-weight: bold;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  .btn:hover {
-    background: var(--accent);
-    color: var(--nude-light);
-  }
-  
-  section {
-    padding: 3rem 2rem;
-    transition: transform 0.3s ease;
-    border-top: 1px solid var(--nude-dark);
-  }
-  
-  section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    background-color: #fdf6f1;
-  }
-  
+}
+/* Make nested headings slightly smaller/less prominent */
+.timeline-item li h3 {
+    font-size: 1em;
+    margin-bottom: 0.2rem;
+    color: #333; /* Darker grey, less prominent than main heading */
+}
+
+
+/* Footer styling */
+footer {
+  background: var(--nude-dark);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem; /* Add some space before the footer */
+}
+
+/* Footer icon link styling */
+footer a {
+  color: var(--accent); /* Icon color */
+  font-size: 1.5rem; /* Icon size */
+  margin: 0 1rem; /* Space between icons */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for footer icons */
+footer a:hover {
+  color: var(--nude-light); /* Change color on hover */
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); } /* Floating effect */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); } /* Fade in effect */
+}
+
+/* Utility classes for scroll animations (if using JS) */
+.hidden { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+.visible { opacity: 1; transform: translateY(0); }
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  /* Stack skills vertically on smaller screens */
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: 1fr;
   }
-  
-  .skills-grid div {
-    background: var(--nude-medium);
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: transform 0.3s ease;
+
+  /* Adjust nav padding for smaller screens */
+  nav {
+      padding: 0.5rem;
   }
-  
-  .skills-grid div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+
+  /* Reduce margin for nav buttons on smaller screens */
+  nav a {
+    margin: 0.5rem 0.25rem; /* Less horizontal margin */
+    padding: 0.6rem 1rem; /* Slightly smaller buttons */
   }
-  
-  .timeline {
-    margin-top: 2rem;
+
+  /* Adjust hero padding */
+  .hero {
+    padding: 3rem 1rem;
   }
-  
-  .timeline-item {
-    margin-bottom: 2rem;
-    border-left: 3px solid var(--accent);
-    padding-left: 1rem;
-  }
-  
-  .timeline-item h3 {
-    margin: 0.2rem 0;
-  }
-  
-  footer {
-    background: var(--nude-dark);
-    text-align: center;
+
+  /* Adjust section padding */
+  section {
     padding: 2rem 1rem;
   }
-  
-  footer a {
-    color: var(--accent);
-    font-size: 1.5rem;
-    margin: 0 1rem;
-    text-decoration: none;
+
+  /* Reduce footer icon size and margin */
+    footer a {
+    font-size: 1.3rem;
+    margin: 0 0.5rem;
   }
-  
-  /* Animations */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .hidden { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-  .visible { opacity: 1; transform: translateY(0); }
-  
-  @media (max-width: 768px) {
-    .skills-grid {
-      grid-template-columns: 1fr;
-    }
-    nav {
-      flex-wrap: wrap;
-      text-align: center;
-    }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce nav button size on very small screens */
     nav a {
-      margin: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9em;
     }
-  }
+
+    /* Reduce profile pic size */
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Adjust headings size */
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.1em; }
+
+    /* Reduce footer icon margin */
+    footer a {
+        margin: 0 0.4rem;
+    }
+}
